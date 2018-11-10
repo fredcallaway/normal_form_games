@@ -36,11 +36,13 @@ $(document).ready(function() {
   });
 
   $(".submit-response").click(function(event) {
-    global.event = event;
-    console.log('submit response', event);
-    $(".submit-response").addClass('disabled');
-    $(".submit-response").html('Sending...');
-    dallinger.createInfo(my_node_id, {contents: "Submitted", info_type: "Info"})
+    // global.event = event;
+    // console.log('submit response', event);
+    console.log('Value', $(this).val())
+    // $(".submit-response").addClass('disabled');
+    $(".submit-response").hide();
+    $(this).html('Sending...');
+    dallinger.createInfo(my_node_id, {contents: $(this).val(), info_type: "Play"})
     // .done(function (resp) {
     //   dallinger.allowExit();
     //   dallinger.goToPage('questionnaire');
