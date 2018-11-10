@@ -1,0 +1,11 @@
+recursive-include dlgr_contrib.normal_form_games *
+recursive-include docs *
+recursive-include licenses *
+
+include CONTRIBUTING.md
+include CHANGELOG.md
+include README.md
+include requirements.txt
+include dev-requirements.txt
+
+prune *.pyc
