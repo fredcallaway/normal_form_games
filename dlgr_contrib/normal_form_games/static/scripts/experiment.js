@@ -38,19 +38,22 @@ $(document).ready(function() {
   $(".submit-response").click(function(event) {
     // global.event = event;
     // console.log('submit response', event);
-    console.log('Value', $(this).val())
+    console.log('Value', $(this).val());
     // $(".submit-response").addClass('disabled');
     $(".submit-response").hide();
     $(this).html('Sending...');
-    dallinger.createInfo(my_node_id, {contents: $(this).val(), info_type: "Play"})
-    // .done(function (resp) {
-    //   dallinger.allowExit();
-    //   dallinger.goToPage('questionnaire');
-    // })
-    // .fail(function (rejection) {
-    //   dallinger.allowExit();
-    //   dallinger.error(rejection);
-    // });
+    // var msg = {contents: $(this).val(), info_type: "Play"};
+    var msg = {this: "that"};
+    dallinger.createInfo(my_node_id, msg)
+    .done(function (resp) {
+      console.log('resp', resp);
+      // dallinger.allowExit();
+      // dallinger.goToPage('questionnaire');
+    })
+    .fail(function (rejection) {
+      dallinger.allowExit();
+      dallinger.error(rejection);
+    });
   });
 });
 

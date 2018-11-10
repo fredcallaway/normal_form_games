@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
 <style type="text/css">
 #target {
     margin: auto;
+    margin-top: 50px;
     text-align: center;
     font-family: Avenir;
     font-size: 14pt;
@@ -12,10 +14,26 @@ table {
     font-size: 20pt;
 }
 rowpay {
-    color: red;
+    color: #ff7f0e;
 }
 colpay {
-    color: blue;
+    color: #4a74ff;
+}
+tr.nfg-row:hover {
+    background: #ddd;
+}
+.chosen {
+    background: #ddd;
+    opacity: 1;
+}
+.unchosen{
+    opacity: 0.4 !important;
+}
+.unchosen > payouts {
+    opacity: 0.4 !important;
+}
+#nfg-msg {
+    margin-top: 20px;
 }
 </style>
 
