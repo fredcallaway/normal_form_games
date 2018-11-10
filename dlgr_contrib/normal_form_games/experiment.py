@@ -6,6 +6,10 @@ from dallinger.networks import Empty
 config = get_config()
 
 
+def log(*args):
+    with open('log', 'a+') as f:
+        print(*args, file=f, flush=True)
+
 def extra_parameters():
 
     types = {
@@ -19,14 +23,17 @@ def extra_parameters():
 
 class NormalFormGame(Experiment):
     """An one-shot economic game described by a payoff matrix."""
-    num_participants = 5
+    num_participants = 3
 
     def __init__(self, session=None):
         """Call the same parent constructor, then call setup() if we have a session.
         """
+        self.experiment_repeats = 5
         super().__init__(session)
         if session:
             self.setup()
+
+        log('this is my message')
 
     def configure(self):
         super().configure()
@@ -37,3 +44,6 @@ class NormalFormGame(Experiment):
     def create_network(self):
         """Return a new network."""
         return Empty(max_size=self.num_participants)
+
+    def info_post_request(node, info):
+        log('post info', node, info)
