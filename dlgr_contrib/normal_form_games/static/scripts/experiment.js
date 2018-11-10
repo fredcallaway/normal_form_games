@@ -35,29 +35,31 @@ $(document).ready(function() {
     dallinger.goToPage('exp');
   });
 
-  $("#submit-response").click(function() {
-    $("#submit-response").addClass('disabled');
-    $("#submit-response").html('Sending...');
+  $(".submit-response").click(function(event) {
+    global.event = event;
+    console.log('submit response', event);
+    $(".submit-response").addClass('disabled');
+    $(".submit-response").html('Sending...');
     dallinger.createInfo(my_node_id, {contents: "Submitted", info_type: "Info"})
-    .done(function (resp) {
-      dallinger.allowExit();
-      dallinger.goToPage('questionnaire');
-    })
-    .fail(function (rejection) {
-      dallinger.allowExit();
-      dallinger.error(rejection);
-    });
+    // .done(function (resp) {
+    //   dallinger.allowExit();
+    //   dallinger.goToPage('questionnaire');
+    // })
+    // .fail(function (rejection) {
+    //   dallinger.allowExit();
+    //   dallinger.error(rejection);
+    // });
   });
 });
 
 // Create the agent.
 var create_agent = function() {
   // Setup participant and get node id
-  $("#submit-response").addClass('disabled');
+  $(".submit-response").addClass('disabled');
   dallinger.createAgent()
   .done(function (resp) {
     my_node_id = resp.node.id;
-    $("#submit-response").removeClass('disabled');
+    $(".submit-response").removeClass('disabled');
   })
   .fail(function (rejection) {
     dallinger.allowExit();

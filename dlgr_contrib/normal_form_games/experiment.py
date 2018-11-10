@@ -19,7 +19,7 @@ def extra_parameters():
 
 class NormalFormGame(Experiment):
     """An one-shot economic game described by a payoff matrix."""
-    num_participants = 1
+    num_participants = 5
 
     def __init__(self, session=None):
         """Call the same parent constructor, then call setup() if we have a session.
@@ -29,7 +29,7 @@ class NormalFormGame(Experiment):
             self.setup()
 
     def configure(self):
-        super(TestExperiment, self).configure()
+        super().configure()
         self.experiment_repeats = 1
         self.custom_variable = config.get('custom_variable')
         self.num_participants = config.get('num_participants', 1)
