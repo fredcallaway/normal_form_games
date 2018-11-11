@@ -63,9 +63,9 @@ function runGame(target, game, opponent) {
     msg.append(`You earned <rowpay>${outcome[0]}</rowpay> points 
       and the other player earned <colpay>${outcome[1]}</colpay> points.`);
 
-
   });
-
+  return rowChoice;
 }
 
 module.exports = runGame;
+window.runGame = runGame;
