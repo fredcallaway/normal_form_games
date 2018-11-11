@@ -7,6 +7,12 @@ var game = [
   [[2, 3], [2, 8], [4, 1]],
 ];
 
+var opponent = function(game) {
+  return new Promise(resolve => {
+    setTimeout((() => resolve(0)), 2000);
+  });
+};
+
 $(document).ready(function () {
-  runGame(game, '#target');
+  runGame('#target', game, opponent);
 });

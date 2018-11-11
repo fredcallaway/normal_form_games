@@ -20,14 +20,7 @@ function render_game(game) {
   return result.join('\n');
 }
 
-var game = [
-  [[3, 3], [0, 6], [1, 5]],
-  [[6, 0], [0, 0], [2, 6]],
-  [[2, 3], [2, 8], [4, 1]],
-];
-
-  
-function runGame(game, target) {
+function runGame(target, game, opponent) {
 
   let msg = $('<div>', {id: 'nfg-msg'});
   let rowmsg = $('<div>').appendTo(msg);
@@ -55,9 +48,7 @@ function runGame(game, target) {
     }));
   });
 
-  colChoice = new Promise(resolve => {
-    setTimeout((() => resolve(1)), 1000);
-  });
+  colChoice = opponent(game);
 
   Promise.all([rowChoice, colChoice]).then(([rc, cc]) => {
     console.log(rc, cc);
