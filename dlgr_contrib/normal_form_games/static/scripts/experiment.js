@@ -4,7 +4,7 @@ var my_node_id;
 $(document).ready(function() {
 
   // do not allow user to close or reload
-  dallinger.preventExit = true;
+  dallinger.preventExit = false;
 
   // Print the consent form.
   $("#print-consent").click(function() {
