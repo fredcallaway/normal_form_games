@@ -39,18 +39,18 @@ class NormalFormGame(Experiment):
         # self.custom_variable = config.get('custom_variable')
         # self.num_participants = config.get('num_participants', 1)
 
-    def create_network(self):
-        """Return a new network."""
-        return FullyConnected(max_size=self.num_participants)
+    # def create_network(self):
+    #     """Return a new network."""
+    #     return FullyConnected(max_size=self.num_participants)
 
-    def choose_network(self, networks, participant):
-        # Choose first available network rather than random
-        return networks[0]
+    # def choose_network(self, networks, participant):
+    #     # Choose first available network rather than random
+    #     return networks[0]
 
     def info_post_request(self, node, info):
         self.log(f'post info: {info.origin_id} {info.contents}')
-        for agent in node.neighbors():
-            node.transmit(what=info, to_whom=agent)
+        # for agent in node.neighbors():
+            # node.transmit(what=info, to_whom=agent)
 
     def create_node(self, participant, network):
         """Create a node for a participant."""

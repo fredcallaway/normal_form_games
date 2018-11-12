@@ -35,23 +35,23 @@ $(document).ready(function() {
     dallinger.goToPage('exp');
   });
 
-  $(".submit-response").click(function(event) {
-    window.event = event;
-    console.log('submit response', event);
-    $(".submit-response").addClass('disabled');
-    $(".submit-response").html('Sending...');
-    dallinger.createInfo(my_node_id, {contents: "222", info_type: "Info"})
-    .done(function (resp) {
-      window.resp = resp;
-      console.log('resp', resp);
-      // dallinger.allowExit();
-      // dallinger.goToPage('questionnaire');
-    })
-    .fail(function (rejection) {
-      dallinger.allowExit();
-      dallinger.error(rejection);
-    });
-  });
+  // $(".submit-response").click(function(event) {
+  //   window.event = event;
+  //   console.log('submit response', event);
+  //   $(".submit-response").addClass('disabled');
+  //   $(".submit-response").html('Sending...');
+  //   dallinger.createInfo(my_node_id, {contents: "222", info_type: "Info"})
+  //   .done(function (resp) {
+  //     window.resp = resp;
+  //     console.log('resp', resp);
+  //     // dallinger.allowExit();
+  //     // dallinger.goToPage('questionnaire');
+  //   })
+  //   .fail(function (rejection) {
+  //     dallinger.allowExit();
+  //     dallinger.error(rejection);
+  //   });
+  // });
 });
 
 // Create the agent.
@@ -70,15 +70,15 @@ var create_agent = function() {
 
     var opponent = function(game) {
       return new Promise(resolve => {
-        dallinger.getTransmissions(my_node_id, { status: 'pending' })
-          .done(function (resp) {
-            console.log(resp);
-            transmissions = resp.transmissions;
-            for (var i = transmissions.length - 1; i >= 0; i--) {
-              console.log('transmission', transmissions[i]);
-            }
-            setTimeout(function () { get_transmissions(my_node_id); }, 100);
-          });
+        // dallinger.getTransmissions(my_node_id, { status: 'pending' })
+        //   .done(function (resp) {
+        //     console.log(resp);
+        //     transmissions = resp.transmissions;
+        //     for (var i = transmissions.length - 1; i >= 0; i--) {
+        //       console.log('transmission', transmissions[i]);
+        //     }
+        //     setTimeout(function () { get_transmissions(my_node_id); }, 100);
+        //   });
         setTimeout((() => resolve(0)), 2000);
       });
     };
