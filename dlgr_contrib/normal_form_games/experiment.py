@@ -46,5 +46,5 @@ class NormalFormGame(Experiment):
         return Empty(max_size=self.num_participants)
 
     def info_post_request(self, node, info):
-        pass
+        self.log("asdfjkl")
         # log('post info', node, info)
