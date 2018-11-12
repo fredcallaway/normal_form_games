@@ -43,12 +43,7 @@ class NormalFormGame(Experiment):
         """Return a new network."""
         return Empty(max_size=self.num_participants)
 
-    # def choose_network(self, networks, participant):
-    #     # Choose first available network rather than random
-    #     return networks[0]
-
     def info_post_request(self, node, info):
         self.log(f'post info: {info.origin_id} {info.contents}')
         # for agent in node.neighbors():
             # node.transmit(what=info, to_whom=agent)
-

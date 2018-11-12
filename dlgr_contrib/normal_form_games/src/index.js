@@ -13,6 +13,8 @@ var opponent = function(game) {
   });
 };
 
+console.log('INDEX');
 $(document).ready(function () {
+  console.log("READY");
   runGame('#target', game, opponent);
 });

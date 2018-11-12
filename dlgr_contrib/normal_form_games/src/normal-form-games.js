@@ -21,6 +21,7 @@ function render_game(game) {
 }
 
 function runGame(target, game, opponent) {
+  console.log('runGame', target, game, opponent);
 
   let msg = $('<div>', {id: 'nfg-msg'});
   let rowmsg = $('<div>').appendTo(msg);
@@ -67,5 +68,4 @@ function runGame(target, game, opponent) {
   return rowChoice;
 }
 
-module.exports = runGame;
 window.runGame = runGame;

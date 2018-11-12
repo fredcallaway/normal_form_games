@@ -27564,7 +27564,6 @@ function runGame(target, game, opponent) {
   return rowChoice;
 }
 
-module.exports = runGame;
 window.runGame = runGame;
 
 },{"jquery":2,"lodash":3}]},{},[1]);
