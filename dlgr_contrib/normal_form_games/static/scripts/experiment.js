@@ -1,12 +1,10 @@
-/* jshint esversion: 6 */
-
 var my_node_id;
 
 // Consent to the experiment.
 $(document).ready(function() {
 
   // do not allow user to close or reload
-  dallinger.preventExit = false;
+  dallinger.preventExit = true;
 
   // Print the consent form.
   $("#print-consent").click(function() {
@@ -37,33 +35,36 @@ $(document).ready(function() {
     dallinger.goToPage('exp');
   });
 
-  // $(".submit-response").click(function(event) {
-  //   window.event = event;
-  //   console.log('submit response', event);
-  //   $(".submit-response").addClass('disabled');
-  //   $(".submit-response").html('Sending...');
-  //   dallinger.createInfo(my_node_id, {contents: "222", info_type: "Info"})
-  //   .done(function (resp) {
-  //     window.resp = resp;
-  //     console.log('resp', resp);
-  //     // dallinger.allowExit();
-  //     // dallinger.goToPage('questionnaire');
-  //   })
-  //   .fail(function (rejection) {
-  //     dallinger.allowExit();
-  //     dallinger.error(rejection);
-  //   });
-  // });
+  $(".submit-response").click(function(event) {
+    // global.event = event;
+    // console.log('submit response', event);
+    console.log('Value', $(this).val());
+    // $(".submit-response").addClass('disabled');
+    $(".submit-response").hide();
+    $(this).html('Sending...');
+    var msg = {contents: String($(this).val()), info_type: "Info"};
+    // var msg = {this: "that"};
+    dallinger.createInfo(my_node_id, msg)
+    .done(function (resp) {
+      console.log('resp', resp);
+      dallinger.allowExit();
+      dallinger.goToPage('questionnaire');
+    })
+    .fail(function (rejection) {
+      dallinger.allowExit();
+      dallinger.error(rejection);
+    });
+  });
 });
 
 // Create the agent.
 var create_agent = function() {
   // Setup participant and get node id
-  // $(".submit-response").addClass('disabled');
+  $(".submit-response").addClass('disabled');
   dallinger.createAgent()
   .done(function (resp) {
     my_node_id = resp.node.id;
-    console.log('create agent');
+    $(".submit-response").removeClass('disabled');
   })
   .fail(function (rejection) {
     dallinger.allowExit();

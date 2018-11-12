@@ -1,11 +1,14 @@
 """Bartlett's transmission chain experiment from Remembering (1932)."""
 from dallinger.config import get_config
 from dallinger.experiments import Experiment
-from dallinger.networks import Empty, FullyConnected
-import dallinger as dlgr
+from dallinger.networks import Empty
 
 config = get_config()
 
+
+def log(*args):
+    with open('log', 'a+') as f:
+        print(*args, file=f, flush=True)
 
 def extra_parameters():
 
@@ -20,30 +23,28 @@ def extra_parameters():
 
 class NormalFormGame(Experiment):
     """An one-shot economic game described by a payoff matrix."""
-    num_participants = 2
-    quorum = 2
+    num_participants = 3
 
     def __init__(self, session=None):
         """Call the same parent constructor, then call setup() if we have a session.
         """
-        self.experiment_repeats = 2
-        self.num_participants = 2
-        self.initial_recruitment_size = self.num_participants
+        self.experiment_repeats = 5
         super().__init__(session)
         if session:
             self.setup()
-        self.log('initialize')
+
+        log('this is my message')
 
     def configure(self):
         super().configure()
-        # self.custom_variable = config.get('custom_variable')
-        # self.num_participants = config.get('num_participants', 1)
+        self.experiment_repeats = 1
+        self.custom_variable = config.get('custom_variable')
+        self.num_participants = config.get('num_participants', 1)
 
     def create_network(self):
         """Return a new network."""
         return Empty(max_size=self.num_participants)
 
     def info_post_request(self, node, info):
-        self.log(f'post info: {info.origin_id} {info.contents}')
-        # for agent in node.neighbors():
-            # node.transmit(what=info, to_whom=agent)
+        self.log("asdfjkl")
+        # log('post info', node, info)
