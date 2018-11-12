@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 var my_node_id;
 
 // Consent to the experiment.
@@ -34,28 +35,37 @@ $(document).ready(function() {
     dallinger.allowExit();
     dallinger.goToPage('exp');
   });
-
-  $(".submit-response").click(function(event) {
-    // global.event = event;
-    // console.log('submit response', event);
-    console.log('Value', $(this).val());
-    // $(".submit-response").addClass('disabled');
-    $(".submit-response").hide();
-    $(this).html('Sending...');
-    var msg = {contents: String($(this).val()), info_type: "Info"};
-    // var msg = {this: "that"};
-    dallinger.createInfo(my_node_id, msg)
-    .done(function (resp) {
-      console.log('resp', resp);
-      dallinger.allowExit();
-      dallinger.goToPage('questionnaire');
-    })
-    .fail(function (rejection) {
-      dallinger.allowExit();
-      dallinger.error(rejection);
-    });
-  });
 });
+
+var show = function() {
+  var game = [
+    [[3, 3], [0, 6], [1, 5]],
+    [[6, 0], [0, 0], [2, 6]],
+    [[2, 3], [2, 8], [4, 1]],
+  ];
+
+  var opponent = function(game) {
+    return new Promise(resolve => {
+      // dallinger.getTransmissions(my_node_id, { status: 'pending' })
+      //   .done(function (resp) {
+      //     console.log(resp);
+      //     transmissions = resp.transmissions;
+      //     for (var i = transmissions.length - 1; i >= 0; i--) {
+      //       console.log('transmission', transmissions[i]);
+      //     }
+      //     setTimeout(function () { get_transmissions(my_node_id); }, 100);
+      //   });
+      setTimeout((() => resolve(0)), 2000);
+      
+    });
+  };
+
+  console.log('window.runGame');
+  window.runGame('#target', game, opponent).then(choice => {
+    console.log('choice', choice);
+    dallinger.createInfo(my_node_id, {contents: `choose row ${choice}`, info_type: 'Info'});
+  });
+};
 
 // Create the agent.
 var create_agent = function() {
@@ -64,6 +74,7 @@ var create_agent = function() {
   dallinger.createAgent()
   .done(function (resp) {
     my_node_id = resp.node.id;
+    show();
     $(".submit-response").removeClass('disabled');
   })
   .fail(function (rejection) {

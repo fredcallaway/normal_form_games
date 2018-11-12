@@ -1,23 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-var $ = require('jquery');
-var runGame = require('./normal-form-games.js');
-
-var game = [
-  [[3, 3], [0, 6], [1, 5]],
-  [[6, 0], [0, 0], [2, 6]],
-  [[2, 3], [2, 8], [4, 1]],
-];
-
-var opponent = function(game) {
-  return new Promise(resolve => {
-    setTimeout((() => resolve(0)), 2000);
-  });
-};
-
-$(document).ready(function () {
-  runGame('#target', game, opponent);
-});
-},{"./normal-form-games.js":4,"jquery":2}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10383,7 +10364,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -27494,7 +27475,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 
 var $ = require('jquery');
 var _ = require('lodash');
@@ -27518,6 +27499,7 @@ function render_game(game) {
 }
 
 function runGame(target, game, opponent) {
+  console.log('runGame', target, game, opponent);
 
   let msg = $('<div>', {id: 'nfg-msg'});
   let rowmsg = $('<div>').appendTo(msg);
@@ -27566,4 +27548,4 @@ function runGame(target, game, opponent) {
 
 window.runGame = runGame;
 
-},{"jquery":2,"lodash":3}]},{},[1]);
+},{"jquery":1,"lodash":2}]},{},[3]);

@@ -33,7 +33,7 @@ class NormalFormGame(Experiment):
         if session:
             self.setup()
 
-        log('this is my message')
+        self.log('initialize')
 
     def configure(self):
         super().configure()
