@@ -62,30 +62,30 @@ var create_agent = function() {
   .done(function (resp) {
     my_node_id = resp.node.id;
 
-    var game = [
-      [[3, 3], [0, 6], [1, 5]],
-      [[6, 0], [0, 0], [2, 6]],
-      [[2, 3], [2, 8], [4, 1]],
-    ];
+    // var game = [
+    //   [[3, 3], [0, 6], [1, 5]],
+    //   [[6, 0], [0, 0], [2, 6]],
+    //   [[2, 3], [2, 8], [4, 1]],
+    // ];
 
-    var opponent = function(game) {
-      return new Promise(resolve => {
-        // dallinger.getTransmissions(my_node_id, { status: 'pending' })
-        //   .done(function (resp) {
-        //     console.log(resp);
-        //     transmissions = resp.transmissions;
-        //     for (var i = transmissions.length - 1; i >= 0; i--) {
-        //       console.log('transmission', transmissions[i]);
-        //     }
-        //     setTimeout(function () { get_transmissions(my_node_id); }, 100);
-        //   });
-        setTimeout((() => resolve(0)), 2000);
-      });
-    };
+    // var opponent = function(game) {
+    //   return new Promise(resolve => {
+    //     // dallinger.getTransmissions(my_node_id, { status: 'pending' })
+    //     //   .done(function (resp) {
+    //     //     console.log(resp);
+    //     //     transmissions = resp.transmissions;
+    //     //     for (var i = transmissions.length - 1; i >= 0; i--) {
+    //     //       console.log('transmission', transmissions[i]);
+    //     //     }
+    //     //     setTimeout(function () { get_transmissions(my_node_id); }, 100);
+    //     //   });
+    //     setTimeout((() => resolve(0)), 2000);
+    //   });
+    // };
 
-    window.runGame('#target', game, opponent).then(choice => {
-      dallinger.createInfo(my_node_id, {contents: `choose row ${choice}`, info_type: 'Info'});
-    });
+    // window.runGame('#target', game, opponent).then(choice => {
+    //   dallinger.createInfo(my_node_id, {contents: `choose row ${choice}`, info_type: 'Info'});
+    // });
 
     
     // $(".submit-response").removeClass('disabled');
