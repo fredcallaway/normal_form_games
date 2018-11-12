@@ -45,5 +45,6 @@ class NormalFormGame(Experiment):
         """Return a new network."""
         return Empty(max_size=self.num_participants)
 
-    def info_post_request(node, info):
-        log('post info', node, info)
+    def info_post_request(self, node, info):
+        pass
+        # log('post info', node, info)

@@ -42,13 +42,13 @@ $(document).ready(function() {
     // $(".submit-response").addClass('disabled');
     $(".submit-response").hide();
     $(this).html('Sending...');
-    // var msg = {contents: $(this).val(), info_type: "Play"};
-    var msg = {this: "that"};
+    var msg = {contents: String($(this).val()), info_type: "Info"};
+    // var msg = {this: "that"};
     dallinger.createInfo(my_node_id, msg)
     .done(function (resp) {
       console.log('resp', resp);
-      // dallinger.allowExit();
-      // dallinger.goToPage('questionnaire');
+      dallinger.allowExit();
+      dallinger.goToPage('questionnaire');
     })
     .fail(function (rejection) {
       dallinger.allowExit();
